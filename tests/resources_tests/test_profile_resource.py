@@ -7,6 +7,7 @@ from ..test_base import AuthorizedTwitterAPITestCase
 class ProfileResourceTestCase(AuthorizedTwitterAPITestCase):
 
     def test_get_profile_successful(self):
+        self.maxDiff = None
         response = self.client.get('/profile/testuser1')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content_type, 'application/json')
@@ -19,13 +20,13 @@ class ProfileResourceTestCase(AuthorizedTwitterAPITestCase):
             'birth_date': '2016-01-30',
             'tweet': [
                 {
-                    'date': '2016-06-01T05:13:00',
+                    'date': '2016-06-01 05:13:00',
                     'id': 1,
                     'text': 'Tweet 1 testuser1',
                     'uri': '/tweet/1'
                 },
                 {
-                    'date': '2016-06-01T05:22:00',
+                    'date': '2016-06-01 05:22:00',
                     'id': 2,
                     'text': 'Tweet 2 testuser1',
                     'uri': '/tweet/2'
